@@ -11,5 +11,4 @@ const initialState = {
     // number: 2,
     }
 
-
 export default initialState; 

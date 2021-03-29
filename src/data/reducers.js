@@ -1,31 +1,11 @@
-import initialState from "../data/initial";
 
-const addPlayer = (state, action) => {
-    const player = {
-        name: action.name,
-    }
-    return {
-        ...state,
-        players: [...state.players, player]
-    }
-}
-
-const addTournamentName = (state, action) => {
-    const tournamantName = {
-        
-    }
-}
-
-const startTournament = (state, action) => {
-
-}
+const startTournament = (state, payload) => ({...state, listOfPlayers: [...payload.playerList], tournamentName: payload.tournamentName})
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "ADD_PLAYER" : return addPlayer(state, action);
         case "START_TOURNAMENT" : return startTournament(state, action);
         default : return state;
     }
 }
 
-export default  reducer;
+export default reducer;
