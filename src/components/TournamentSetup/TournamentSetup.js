@@ -23,12 +23,12 @@ const TournamentSetup = ({ startTournament }) => {
     }
 
     const tournamentSubmit = (e) => {
+        e.preventDefault();
         const tournamentData = {
             tournamentName : tournamentName,
             playerList: playerList,
         }
         startTournament(tournamentData);
-        e.preventDefault();
     }
 
     return (

@@ -1,5 +1,5 @@
 
-const startTournament = (state, payload) => ({...state, listOfPlayers: [...payload.playerList], tournamentName: payload.tournamentName})
+const startTournament = (state, {payload}) => ({...state, listOfPlayers: [...payload.playerList], tournamentName: payload.tournamentName})
 
 const reducer = (state, action) => {
     switch (action.type) {

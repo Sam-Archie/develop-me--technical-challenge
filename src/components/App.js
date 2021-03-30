@@ -1,5 +1,5 @@
 import '../../src/App.css';
-import TournamentSetup from "./TournamentSetup/TournamentSetup";
+import TournamentSetup from "./TournamentSetup/";
 
 const App = () =>(
     <>
