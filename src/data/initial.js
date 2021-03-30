@@ -6,6 +6,7 @@ const initialState = {
     listOfRounds: [],
     listOfPlayers: [],
     listOfGames: [],
+    tournamentStarted: false,
     // winningScore: 21,
     // winningScore: 21,
     // number: 2,

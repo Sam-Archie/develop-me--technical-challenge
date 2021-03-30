@@ -1,6 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
 
-const startTournament = (state, {payload}) => ({...state, listOfPlayers: [...payload.playerList], tournamentName: payload.tournamentName})
+const startTournament = (state, {payload}) => ({...state, listOfPlayers: [...payload.playerList], tournamentName: payload.tournamentName, tournamentStarted: !payload.tournamentStarted})
 
 const randomizer = (state) => ({...state, listOfPlayers: state.listOfPlayers.sort(() => Math.random() - 0.5)});
 
@@ -23,7 +22,7 @@ const createRoundFromArray = listOfPlayers => {
 
 // const newPlayerList = state.listOfRounds[listOfRound.lastIndexOf()].map((game) => game.winner);
 
-const createInitialGames = (state) => ({...state, listOfRounds: [createRoundFromArray(state.listOfPlayers)]})
+const createInitialGames = (state) => ({...state, listOfRounds: createRoundFromArray(state.listOfPlayers)})
 
 const reducer = (state, action) => {
     switch (action.type) {
