@@ -5,8 +5,7 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import store from "./data/store";
-import initial from "./data/initial";
-import reducers from "./data/reducers";
+
 
 
 
