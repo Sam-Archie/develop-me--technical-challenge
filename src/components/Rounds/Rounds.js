@@ -1,10 +1,11 @@
 import React from 'react';
-import Game from "../Games/Game"
+import Game from "../Game"
 
-const Rounds = ({ Rounds }) => {
+const Rounds = ({ Round }) => {
+
     return (
         <div>
-            {Rounds.map((round) => (
+            {Round.map((round) => (
                 <Game key={round.id} playerOne={round.playerOne} playerTwo={round.playerTwo}/>
             ))}
         </div>

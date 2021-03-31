@@ -3,7 +3,7 @@ import Rounds from "./Rounds";
 
 const mapStateToProps = state => {
     return {
-        Rounds: state.listOfRounds,
+        Round: state.listOfRounds,
     }
 }
 

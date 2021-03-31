@@ -1,11 +1,13 @@
-
 import TournamentSetup from "../TournamentSetup";
-import Rounds from "../Rounds"
+import Rounds from "../Rounds";
+
 
 const App = ({ tournamentStarted }) =>(
     <>
-    { !tournamentStarted ? <TournamentSetup /> : <Rounds />
-    }
+    { !tournamentStarted ? 
+    <TournamentSetup /> : 
+    <Rounds />
+}
     </>
 
 )
