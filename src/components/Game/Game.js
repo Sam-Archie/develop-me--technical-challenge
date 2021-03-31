@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Game = ({ playerOne, playerTwo, reset, submitWinner, submitRound }) => {
+const Game = ({ playerOne, playerTwo, submitWinner }) => {
     
     let [winner, setWinner] = useState("");
     let [submitClicked, setSubmitClicked] = useState(false);
@@ -27,14 +27,12 @@ const Game = ({ playerOne, playerTwo, reset, submitWinner, submitRound }) => {
         backgroundColor: "blue",
     }
     return (
-        <>
+        <div>
             <button style={playerClickOne ? buttonStyle : null} onClick={ handleWinnerOne }>{ playerOne }</button>
             <button style={playerClickTwo ? buttonStyle : null} onClick={ handleWinnerTwo }>{ playerTwo }</button>
             <p>{submitClicked ? `Well done ${winner}` : null}</p>
             {!submitClicked ? <button onClick={ confirmWinner }>Submit Winner</button> : null}
-            <button onClick={ reset }>RESET</button>
-            <button onClick={ submitRound }>Submit All Rounds</button>
-        </>
+        </div>
     );
 };
 

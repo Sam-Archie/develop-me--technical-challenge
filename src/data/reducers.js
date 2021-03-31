@@ -42,12 +42,7 @@ const newRound = (state) => {
     }
 }
 
-// const newPlayerList = listOfRounds[listOfRound.lastIndexOf()].map(game => game.player1.score > game.player2.score ? player1 : player2)
-
-// const newPlayerList = state.listOfRounds[listOfRound.lastIndexOf()].map((game) => game.winner);
-
 const createInitialGames = (state) => ({...state, listOfRounds: createRoundFromArray(state.listOfPlayers)})
-// const createGames = (state) => ({...state, listOfRounds: createRoundFromArray()})
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -55,10 +50,14 @@ const reducer = (state, action) => {
         case "SUBMIT_ROUND" : return createInitialGames(newRound(state, action));
         case "WINNER" : return gameWinner(state, action);
         case "RESET" : return reset();
-        // case "NEW_ROUND" : return createGames(state, action)
         default : return state;
-
+        
     }
 }
 
 export default reducer;
+
+// const createGames = (state) => ({...state, listOfRounds: createRoundFromArray()})
+// const newPlayerList = listOfRounds[listOfRound.lastIndexOf()].map(game => game.player1.score > game.player2.score ? player1 : player2)
+// case "NEW_ROUND" : return createGames(state, action)
+// const newPlayerList = state.listOfRounds[listOfRound.lastIndexOf()].map((game) => game.winner);
