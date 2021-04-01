@@ -1,6 +1,5 @@
 import React from 'react';
-import Game from "../Game";
-import {v4 as uuid} from "uuid"; 
+import Game from "../Game"; 
 
 const Rounds = ({ Round, reset, submitRound, playerList, listOfWinners, tournamentName }) => {
 

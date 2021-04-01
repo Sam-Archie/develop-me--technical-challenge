@@ -1,4 +1,3 @@
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom";
 import initialState  from "./initial";
 import {v4 as uuid} from "uuid";
 
@@ -18,7 +17,6 @@ const createRoundFromArray = listOfPlayers => {
         id: uuid(),
         playerOne: player,
         playerTwo: listOfPlayers[index + 1],
-        winner: null,
     }
     return [...acc, game];
 
@@ -34,7 +32,8 @@ const gameWinner = (state, {payload}) => {
     let player = payload; 
     return {
         ...state,
-        winnerList: [...state.winnerList, player]
+        winnerList: [...state.winnerList, player],
+         
     }
 }
 
