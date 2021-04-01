@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
 
-const TournamentSetup = ({ startTournament, tournamentNumberChecker, playerCount }) => {
+const TournamentSetup = ({ startTournament, tournamentNumberChecker, playerCount, addPlayerName, listOfPlayers }) => {
 
     const [playerName, setPlayerName] = useState("");
-    const [playerList, setPlayerList] = useState([]);
     const [tournamentName, setTournamentName] = useState("");
 
     const handlePlayerName = (e) => {
@@ -13,33 +12,39 @@ const TournamentSetup = ({ startTournament, tournamentNumberChecker, playerCount
         }
 
     const playerListSubmit = (e) => {
-        setPlayerList([...playerList, playerName], setPlayerName(""));
-        e.preventDefault();
-        tournamentNumberChecker();
+        if (listOfPlayers.includes(playerName)) {
+            return null;
+        }
+        else {
+            setPlayerName("");
+            e.preventDefault();
+            tournamentNumberChecker();
+            addPlayerName(playerName);
+        }
     }
 
-    const handleTournamentName = (e) =>{ 
+    const handleTournamentName = (e) => { 
         const newTournamentName = e.currentTarget.value; 
         setTournamentName(newTournamentName);
     }
 
     const tournamentSubmit = (e) => {
         e.preventDefault();
-        const tournamentData = {
-            tournamentName : tournamentName,
-            playerList: playerList,
-        }
-        startTournament(tournamentData);
+        startTournament(tournamentName);
     }
-
-    const correctPlayerNumber = (n) =>
-    {
-        if (n === 0)
+    
+    const correctPlayerNumber = (n) => {
+        if (n === 0) {
             return false;
+        }
         return parseInt((Math.ceil((Math.log(n) / Math.log(2))))) === parseInt((Math.floor(((Math.log(n) / Math.log(2))))));
     }
+    
+    const isDisabled = () => listOfPlayers.length < 4 || !correctPlayerNumber(listOfPlayers.length) ? true : false;
 
-
+    const isExisitingName = () => listOfPlayers.some((player) => player === playerName);
+     
+    
     return (
         <>
             <form onSubmit={ tournamentSubmit }>
@@ -50,7 +55,8 @@ const TournamentSetup = ({ startTournament, tournamentNumberChecker, playerCount
                     id="playerName"
                     onChange={ handlePlayerName } 
                     value={ playerName }/>
-                <button onClick={ playerListSubmit }>Add Player</button>
+                <button disabled={ isExisitingName() } onClick={ playerListSubmit }>Add Player</button>
+                {isExisitingName() && <span>You cannot have two names that are the same</span>}
 
                 <label htmlFor="playerName">Enter Tournament Name:</label>
                 <input
@@ -59,16 +65,16 @@ const TournamentSetup = ({ startTournament, tournamentNumberChecker, playerCount
                     id="tournamentName"
                     onChange={ handleTournamentName } 
                     value={ tournamentName }/>
-                <button>Start Tournament</button>
+                <button disabled={ isDisabled() }>Start Tournament</button>
             </form>
             <ul className="list-group">
                 <p>Tournament Players</p>
-                    {playerList.map((playerName, index) => (
+                    {listOfPlayers.map((playerName, index) => (
                         <li className="list-group-item" key={index}>{playerName}</li>
                     ))}
             </ul>
-            <p>{playerCount < 4 ? "Please Enter four or more players" : 
-                    !correctPlayerNumber(playerCount) ? "Please enter 4, 8, 18,32, 64 ..... number of players" : 
+            <p>{playerCount < 4 ? "Please enter four or more players" : 
+                    !correctPlayerNumber(playerCount) ? "Please enter 4, 8, 16,32, 64 ..... number of players" : 
                         null}</p>
         </>
     )

@@ -30,3 +30,10 @@ export const playerNumberCheckerAction = () => {
         type: "PLAYER_NUMBER_CHECKER",
     }
 }
+
+export const addPlayerNameAction = (player) => {
+    return {
+        type: "ADD_PLAYER",
+        payload: player
+    }
+}
