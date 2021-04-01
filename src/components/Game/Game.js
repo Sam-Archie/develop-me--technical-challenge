@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const Game = ({ playerOne, playerTwo, submitWinner }) => {
     
-    let [winner, setWinner] = useState("");
+    let [winner, setWinner] = useState();
     let [submitClicked, setSubmitClicked] = useState(false);
     let [playerClickOne, setPlayerClickOne] = useState(false);
     let [playerClickTwo, setPlayerClickTwo] = useState(false);
@@ -24,14 +24,17 @@ const Game = ({ playerOne, playerTwo, submitWinner }) => {
 
     } 
     let buttonStyle = {
-        backgroundColor: "blue",
+        backgroundColor: "#d37121",
     }
+
+    //abstract this out so it switches a class on or off
+    
     return (
         <div>
-            <button style={playerClickOne ? buttonStyle : null} onClick={ handleWinnerOne }>{ playerOne }</button>
-            <button style={playerClickTwo ? buttonStyle : null} onClick={ handleWinnerTwo }>{ playerTwo }</button>
+            <button className="btn primary" style={winner === playerOne ? buttonStyle : null} onClick={ handleWinnerOne }>{ playerOne }</button>
+            <button className="btn primary" style={winner === playerTwo ? buttonStyle : null} onClick={ handleWinnerTwo }>{ playerTwo }</button>
             <p>{submitClicked ? `Well done ${winner}` : null}</p>
-            {!submitClicked ? <button onClick={ confirmWinner }>Submit Winner</button> : null}
+            {!submitClicked ? <button className="btn primary" onClick={ confirmWinner }>Submit Winner</button> : null}
         </div>
     );
 };

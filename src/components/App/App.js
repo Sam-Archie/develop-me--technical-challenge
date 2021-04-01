@@ -3,12 +3,13 @@ import Rounds from "../Rounds";
 
 
 const App = ({ tournamentStarted }) =>(
-    <>
-    { !tournamentStarted ? 
-    <TournamentSetup /> : 
-    <Rounds />
-}
-    </>
+    <div className="container">
+        { 
+            !tournamentStarted ? 
+            <TournamentSetup /> : 
+            <Rounds />
+        }
+    </div>
 
 )
 

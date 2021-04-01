@@ -2,17 +2,18 @@ import React from 'react';
 import Game from "../Game";
 import {v4 as uuid} from "uuid"; 
 
-const Rounds = ({ Round, reset, submitRound }) => {
+const Rounds = ({ Round, reset, submitRound, playerList, listOfWinners, tournamentName }) => {
 
     return (
         <div>
-            {Round.map((round) => (
-                <Game key={ uuid() } playerOne={round.playerOne} playerTwo={round.playerTwo}/>
+            <h1>{ tournamentName }</h1>
+            {Round.map((game) => (
+                <Game key={ game.id } playerList={ playerList } playerOne={game.playerOne} playerTwo={game.playerTwo}/>
             ))}
-            <button onClick={ reset }>RESET</button>
-            <button onClick={ submitRound }>Submit All Rounds</button>
+            <button className="btn primary" onClick={ reset }>RESET</button>
+            {listOfWinners.length >= (playerList.length / 2) ? <button onClick={ submitRound }>Submit All Rounds</button> : null}
+            {playerList.length <= 2 ? <button>Submit Champion</button> : null}
         </div>
     );
 };
-
 export default Rounds;

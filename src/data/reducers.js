@@ -1,9 +1,13 @@
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from "react-dom";
 import initialState  from "./initial";
+import {v4 as uuid} from "uuid";
 
 
-const startTournament = (state, {payload}) => ({...state, listOfPlayers: [...payload.playerList], tournamentName: payload.tournamentName, tournamentStarted: !payload.tournamentStarted})
+const startTournament = (state, {payload}) => ({...state, listOfPlayers: randomizer([...payload.playerList]), tournamentName: payload.tournamentName, tournamentStarted: true})
 
-const randomizer = (state) => ({...state, listOfPlayers: state.listOfPlayers.sort(() => Math.random() - 0.5)});
+const randomizer = (listOfPlayers) => (listOfPlayers.sort(() => Math.random() - 0.5));
+
+const createInitialGames = (state) => ({...state, listOfRounds: createRoundFromArray(state.listOfPlayers)})
 
 const createRoundFromArray = listOfPlayers => {
     return listOfPlayers.reduce((acc, player, index) => {
@@ -11,7 +15,7 @@ const createRoundFromArray = listOfPlayers => {
         return acc;
     }
     const game = {
-        id: Math.ceil((index + 1) / 2),
+        id: uuid(),
         playerOne: player,
         playerTwo: listOfPlayers[index + 1],
         winner: null,
@@ -42,11 +46,10 @@ const newRound = (state) => {
     }
 }
 
-const createInitialGames = (state) => ({...state, listOfRounds: createRoundFromArray(state.listOfPlayers)})
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "START_TOURNAMENT" : return createInitialGames(randomizer(startTournament(state, action)));
+        case "START_TOURNAMENT" : return createInitialGames(startTournament(state, action));
         case "SUBMIT_ROUND" : return createInitialGames(newRound(state, action));
         case "WINNER" : return gameWinner(state, action);
         case "RESET" : return reset();
