@@ -24,3 +24,9 @@ export const submitRoundAction = () => {
         type: "SUBMIT_ROUND",
     }
 }
+
+export const playerNumberCheckerAction = () => {
+    return {
+        type: "PLAYER_NUMBER_CHECKER",
+    }
+}

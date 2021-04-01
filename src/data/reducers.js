@@ -45,12 +45,20 @@ const newRound = (state) => {
     }
 }
 
+const playerCount = (state) => {
+    return {
+        ...state,
+        playerCount: state.playerCount + 1, 
+    }
+}
+
 
 const reducer = (state, action) => {
     switch (action.type) {
         case "START_TOURNAMENT" : return createInitialGames(startTournament(state, action));
         case "SUBMIT_ROUND" : return createInitialGames(newRound(state, action));
         case "WINNER" : return gameWinner(state, action);
+        case "PLAYER_NUMBER_CHECKER" : return playerCount(state, action);
         case "RESET" : return reset();
         default : return state;
         

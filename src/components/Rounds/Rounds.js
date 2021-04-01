@@ -1,12 +1,13 @@
 import React from 'react';
 import Game from "../Game"; 
 
-const Rounds = ({ Round, reset, submitRound, playerList, listOfWinners, tournamentName }) => {
+const Rounds = ({ round, reset, submitRound, playerList, listOfWinners, tournamentName }) => {
 
+    
     return (
         <div>
             <h1>{ tournamentName }</h1>
-            {Round.map((game) => (
+            {round.map((game) => (
                 <Game key={ game.id } playerList={ playerList } playerOne={game.playerOne} playerTwo={game.playerTwo}/>
             ))}
             <button className="btn primary" onClick={ reset }>RESET</button>

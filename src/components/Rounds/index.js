@@ -4,7 +4,7 @@ import { resetAction, submitRoundAction } from "../../data/actions.js";
 
 const mapStateToProps = state => {
     return {
-        Round: state.listOfRounds,
+        round: state.listOfRounds,
         listOfWinners: state.winnerList,
         playerList: state.listOfPlayers, 
         tournamentName: state.tournamentName,
