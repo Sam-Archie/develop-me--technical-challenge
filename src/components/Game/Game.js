@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import TournamentWinner from "../TournamentWinner/TournamentWinner";
+
 
 const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore }) => {
     
