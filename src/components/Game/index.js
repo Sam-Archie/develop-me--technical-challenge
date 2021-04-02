@@ -6,6 +6,7 @@ const mapStateToProps = state => {
     
     return {
         winningScore: state.winningScore,
+        winner: state.winnerList,
     }
 }
 

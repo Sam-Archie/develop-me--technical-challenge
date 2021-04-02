@@ -84,8 +84,8 @@ const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPl
                         <li className="list-group-item" key={index}>{playerName}</li>
                     ))}
             </ul>
-            <p>{playerCount < 4 ? "Please enter four or more players" : 
-                    !correctPlayerNumber(playerCount) ? "Please enter 4, 8, 16,32, 64 ..... number of players" : 
+            <p>{listOfPlayers.length < 4 ? "Please enter four or more players" : 
+                    !correctPlayerNumber(listOfPlayers.length) ? "Please enter 4, 8, 16,32, 64 ..... number of players" : 
                         null}</p>
         </>
     )
