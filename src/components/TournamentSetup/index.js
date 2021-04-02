@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { tournamentStartAction, playerNumberCheckerAction, addPlayerNameAction } from "../../data/actions.js";
+import { tournamentStartAction, addPlayerNameAction } from "../../data/actions.js";
 import TournamentSetup from "./TournamentSetup";
 
 const mapStateToProps = state => {
@@ -13,7 +13,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
        startTournament: (tournamentData) => dispatch(tournamentStartAction(tournamentData)),
-       tournamentNumberChecker: () => dispatch(playerNumberCheckerAction()),
        addPlayerName: (player) => dispatch(addPlayerNameAction(player)),
     };
 };

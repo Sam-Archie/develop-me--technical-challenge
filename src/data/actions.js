@@ -25,11 +25,6 @@ export const submitRoundAction = () => {
     }
 }
 
-export const playerNumberCheckerAction = () => {
-    return {
-        type: "PLAYER_NUMBER_CHECKER",
-    }
-}
 
 export const addPlayerNameAction = (player) => {
     return {

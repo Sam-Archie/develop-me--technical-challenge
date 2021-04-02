@@ -8,10 +8,7 @@ const initialState = {
     listOfGames: [],
     tournamentStarted: false,
     winnerList: [],
-    // winningScore: 21,
-    // winningScore: 21,
-    // number: 2,
-    playerCount: 0,
+    winningScore: 0,
     }
 
 export default initialState; 

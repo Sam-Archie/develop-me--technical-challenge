@@ -5,7 +5,7 @@ import Game from "./Game";
 const mapStateToProps = state => {
     
     return {
-        playerList: state.playerList,
+        winningScore: state.winningScore,
     }
 }
 
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

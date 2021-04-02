@@ -1,35 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Game = ({ playerOne, playerTwo, submitWinner, playerList, isFinal }) => {
+const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore }) => {
     
-    let [winner, setWinner] = useState();
-    let [winnerSelect, setWinnerSelect] = useState(false);
+    const [playerOneScore, setPlayerOneScore] = useState(0);
+    const [playerTwoScore, setPlayerTwoScore] = useState(0);
 
-    const handleWinnerOne = () => {
-        setWinner(playerOne);
+    useEffect(() => {
+        if(playerOneScore === +winningScore ){
+            submitWinner(playerOne);
+        }
+        if (playerTwoScore === +winningScore) {
+            submitWinner(playerTwo);
+          }  
+        
+    }, [playerOneScore, playerTwoScore, playerOne, playerTwo, winningScore, submitWinner])
 
-    }
-    const handleWinnerTwo = () => {
-        setWinner(playerTwo);
-
-    }
-
-    const confirmWinner = () => {
-        setWinnerSelect(true);
-        submitWinner(winner);
-
-    } 
     let buttonStyle = {
         backgroundColor: "#d37121",
     }
-    //abstract this out so it switches a class on or off
-    
+
     return (
         <div>
-            <button className="btn primary" style={winner === playerOne ? buttonStyle : null} onClick={ handleWinnerOne }>{ playerOne }</button>
-            <button className="btn primary" style={winner === playerTwo ? buttonStyle : null} onClick={ handleWinnerTwo }>{ playerTwo }</button>
-            <p>{winnerSelect ? `Well done ${winner}` : null}</p>
-            {!winnerSelect ? <button className="btn primary" onClick={ confirmWinner }>Submit Winner</button> : null}
+            <button className="btn primary" style={playerOneScore === +winningScore ? buttonStyle : null}>{ playerOne }</button>
+            <p>{ playerOneScore }</p>
+            <button disabled={playerOneScore === +winningScore || playerTwoScore === +winningScore} onClick={() => setPlayerOneScore(playerOneScore + 1)} className="btn primary">+</button>
+            <button className="btn primary" style={playerTwoScore === +winningScore ? buttonStyle : null}>{ playerTwo }</button>
+            <p>{ playerTwoScore }</p>
+            <button onClick={ () => setPlayerTwoScore(playerTwoScore + 1)} className="btn primary">+</button>
+            <p>{playerTwoScore === +winningScore ? `Well done ${playerTwo}` : playerOneScore === +winningScore ? `Well done ${playerOne}` : null}</p>
         </div>
     );
 };

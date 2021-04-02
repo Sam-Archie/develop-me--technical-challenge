@@ -2,7 +2,7 @@ import initialState  from "./initial";
 import {v4 as uuid} from "uuid";
 
 
-const startTournament = (state, {payload}) => ({...state, listOfPlayers: randomizer([...state.listOfPlayers]), tournamentName: payload.tournamentName, tournamentStarted: true})
+const startTournament = (state, {payload}) => ({...state, listOfPlayers: randomizer([...state.listOfPlayers]), tournamentName: payload.tournamentName, tournamentStarted: true, winningScore: payload.winningScore})
 
 const randomizer = (listOfPlayers) => (listOfPlayers.sort(() => Math.random() - 0.5));
 
@@ -45,12 +45,6 @@ const newRound = (state) => {
     }
 }
 
-const playerCount = (state) => {
-    return {
-        ...state,
-        playerCount: state.playerCount + 1, 
-    }
-}
 
 const addNewPlayerAtStart = (state, {payload}) => {
     const player = payload;
@@ -66,7 +60,6 @@ const reducer = (state, action) => {
         case "START_TOURNAMENT" : return createInitialGames(startTournament(state, action));
         case "SUBMIT_ROUND" : return createInitialGames(newRound(state, action));
         case "WINNER" : return gameWinner(state, action);
-        case "PLAYER_NUMBER_CHECKER" : return playerCount(state, action);
         case "ADD_PLAYER" : return addNewPlayerAtStart(state, action);
         case "RESET" : return reset();
         default : return state;
@@ -75,8 +68,3 @@ const reducer = (state, action) => {
 }
 
 export default reducer;
-
-// const createGames = (state) => ({...state, listOfRounds: createRoundFromArray()})
-// const newPlayerList = listOfRounds[listOfRound.lastIndexOf()].map(game => game.player1.score > game.player2.score ? player1 : player2)
-// case "NEW_ROUND" : return createGames(state, action)
-// const newPlayerList = state.listOfRounds[listOfRound.lastIndexOf()].map((game) => game.winner);

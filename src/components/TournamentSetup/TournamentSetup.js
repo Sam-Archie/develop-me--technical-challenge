@@ -1,36 +1,38 @@
 import React, { useState } from 'react';
 
 
-const TournamentSetup = ({ startTournament, tournamentNumberChecker, playerCount, addPlayerName, listOfPlayers }) => {
+const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPlayers }) => {
 
     const [playerName, setPlayerName] = useState("");
     const [tournamentName, setTournamentName] = useState("");
+    const [winningScore, setWinningScore] = useState("7");
 
-    const handlePlayerName = (e) => {
-        const newName = e.currentTarget.value;
-        setPlayerName(newName);
-        }
+    const handlePlayerName = (e) => setPlayerName(e.currentTarget.value);
+        
 
-    const playerListSubmit = (e) => {
-        if (listOfPlayers.includes(playerName)) {
-            return null;
-        }
-        else {
-            setPlayerName("");
-            e.preventDefault();
-            tournamentNumberChecker();
+    const playerNameSubmit = (e) => {
+        e.preventDefault();
+        if (playerName === "") {
+            return;
+        } else if (playerName !== "") {
             addPlayerName(playerName);
         }
+        setPlayerName("");
     }
 
+
     const handleTournamentName = (e) => { 
-        const newTournamentName = e.currentTarget.value; 
-        setTournamentName(newTournamentName);
+        const tournamentName = e.currentTarget.value; 
+        setTournamentName(tournamentName);
     }
 
     const tournamentSubmit = (e) => {
         e.preventDefault();
-        startTournament(tournamentName);
+        const tournamentData = {
+            tournamentName: tournamentName,
+            winningScore: winningScore,
+        }
+        startTournament(tournamentData);
     }
     
     const correctPlayerNumber = (n) => {
@@ -42,23 +44,31 @@ const TournamentSetup = ({ startTournament, tournamentNumberChecker, playerCount
     
     const isDisabled = () => listOfPlayers.length < 4 || !correctPlayerNumber(listOfPlayers.length) ? true : false;
 
-    const isExisitingName = () => listOfPlayers.some((player) => player === playerName);
+    const isExisitingName = () => listOfPlayers.some((player) => player.toLowerCase() === playerName.toLowerCase());
      
-    
     return (
         <>
             <form onSubmit={ tournamentSubmit }>
-                <label>Enter Player Name:</label>
+                <label htmlFor="playerName">Enter Player Name:</label>
                 <input
                     className=""
                     type="text"
                     id="playerName"
                     onChange={ handlePlayerName } 
                     value={ playerName }/>
-                <button disabled={ isExisitingName() } onClick={ playerListSubmit }>Add Player</button>
+                <button disabled={ isExisitingName() } onClick={ playerNameSubmit }>Add Player</button>
+                {playerName === "" ? <p>Please Enter a valid name</p> : null}
                 {isExisitingName() && <span>You cannot have two names that are the same</span>}
 
-                <label htmlFor="playerName">Enter Tournament Name:</label>
+                <label>Select Winning Score</label>
+                <select onChange={e => setWinningScore(e.currentTarget.value)}>
+                    <option value={7}>7</option>
+                    <option value={11}>11</option>
+                    <option value={15}>15</option>
+                    <option value={21}>21</option>
+                </select>
+
+                <label htmlFor="tournamentName">Enter Tournament Name:</label>
                 <input
                     className=""
                     type="text"
@@ -66,6 +76,7 @@ const TournamentSetup = ({ startTournament, tournamentNumberChecker, playerCount
                     onChange={ handleTournamentName } 
                     value={ tournamentName }/>
                 <button disabled={ isDisabled() }>Start Tournament</button>
+
             </form>
             <ul className="list-group">
                 <p>Tournament Players</p>
