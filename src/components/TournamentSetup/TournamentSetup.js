@@ -46,9 +46,10 @@ const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPl
 
     const isExisitingName = () => listOfPlayers.some((player) => player.toLowerCase() === playerName.toLowerCase());
      
-    return (
+    return (  
         <>
-            <form onSubmit={ tournamentSubmit }>
+            <form className="main-form" onSubmit={ tournamentSubmit }>
+                <div className="player-name-form">
                 <label htmlFor="playerName">Enter Player Name:</label>
                 <input
                     className=""
@@ -56,9 +57,10 @@ const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPl
                     id="playerName"
                     onChange={ handlePlayerName } 
                     value={ playerName }/>
-                <button disabled={ isExisitingName() } onClick={ playerNameSubmit }>Add Player</button>
+                <button className=".add-player-button" disabled={ isExisitingName() } onClick={ playerNameSubmit }>Add Player</button>
                 {playerName === "" ? <p>Please Enter a valid name</p> : null}
                 {isExisitingName() && <span>You cannot have two names that are the same</span>}
+                </div>
 
                 <label>Select Winning Score</label>
                 <select onChange={e => setWinningScore(e.currentTarget.value)}>
@@ -86,7 +88,8 @@ const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPl
             </ul>
             <p>{listOfPlayers.length < 4 ? "Please enter four or more players" : 
                     !correctPlayerNumber(listOfPlayers.length) ? "Please enter 4, 8, 16,32, 64 ..... number of players" : 
-                        null}</p>
+                        null}
+            </p>
         </>
     )
    }

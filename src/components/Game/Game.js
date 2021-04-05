@@ -6,8 +6,6 @@ const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore }) => 
     const [playerOneScore, setPlayerOneScore] = useState(0);
     const [playerTwoScore, setPlayerTwoScore] = useState(0);
 
-
-
     useEffect(() => {
         if(playerOneScore === +winningScore ){
             submitWinner(playerOne);
@@ -18,10 +16,7 @@ const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore }) => 
         
     }, [playerOneScore, playerTwoScore, playerOne, playerTwo, winningScore, submitWinner])
 
-    let buttonStyle = {
-        backgroundColor: "#d37121",
-    }
-
+   
     const congratulations = () => {
         if (playerTwoScore === +winningScore && isFinal) {
         return <p>{`Congratulations ${playerTwo} You are the tournament winner!!!!`}</p>
@@ -37,6 +32,11 @@ const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore }) => 
         }
         
     }
+
+     let buttonStyle = {
+        backgroundColor: "#d37121",
+    }
+
 
     return (
         <div>
