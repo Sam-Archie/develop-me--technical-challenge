@@ -2,7 +2,7 @@ import initialState  from "./initial";
 import {v4 as uuid} from "uuid";
 
 
-const startTournament = (state, {payload}) => ({...state, listOfPlayers: randomizer([...state.listOfPlayers]), tournamentName: payload.tournamentName, tournamentStarted: true, winningScore: payload.winningScore})
+const startTournament = (state, {payload}) => ({...state, listOfPlayers: randomizer([...state.listOfPlayers]), tournamentName: payload.tournamentName, tournamentStarted: true, winningScore: payload.winningScore, tournamentId: payload.id})
 
 const randomizer = (listOfPlayers) => (listOfPlayers.sort(() => Math.random() - 0.5));
 
@@ -47,7 +47,12 @@ const newRound = (state) => {
 
 
 const addNewPlayerAtStart = (state, {payload}) => {
-    const player = payload;
+
+    const player = {
+        id : uuid(),
+        name : payload
+    };
+
     return {
         ...state,
         listOfPlayers: [...state.listOfPlayers, player]

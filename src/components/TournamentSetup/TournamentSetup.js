@@ -31,6 +31,7 @@ const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPl
         const tournamentData = {
             tournamentName: tournamentName,
             winningScore: winningScore,
+            entrants: listOfPlayers,
         }
         startTournament(tournamentData);
     }
@@ -44,7 +45,7 @@ const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPl
     
     const isDisabled = () => listOfPlayers.length < 4 || !correctPlayerNumber(listOfPlayers.length) ? true : false;
 
-    const isExisitingName = () => listOfPlayers.some((player) => player.toLowerCase() === playerName.toLowerCase());
+    const isExisitingName = () => listOfPlayers.some((player) => player.name.toLowerCase() === playerName.toLowerCase());
      
     return (  
         <>
@@ -82,8 +83,8 @@ const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPl
             </form>
             <ul className="list-group">
                 <p>Tournament Players</p>
-                    {listOfPlayers.map((playerName, index) => (
-                        <li className="list-group-item" key={index}>{playerName}</li>
+                    {listOfPlayers.map((player, index) => (
+                        <li className="list-group-item" key={index}>{player.name}</li>
                     ))}
             </ul>
             <p>{listOfPlayers.length < 4 ? "Please enter four or more players" : 
