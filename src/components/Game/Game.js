@@ -1,42 +1,38 @@
 import { useState, useEffect } from "react";
 
 
-const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore }) => {
+const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore, roundNumber }) => {
     
     const [playerOneScore, setPlayerOneScore] = useState(0);
     const [playerTwoScore, setPlayerTwoScore] = useState(0);
 
     useEffect(() => {
-        if(playerOneScore === +winningScore ){
-            submitWinner(playerOne);
-        }
-        if (playerTwoScore === +winningScore) {
-            submitWinner(playerTwo);
-          }  
-        
-    }, [playerOneScore, playerTwoScore, playerOne, playerTwo, winningScore, submitWinner])
+      if (playerOneScore === +winningScore) {
+        submitWinner(playerOne, roundNumber);
+      }
+      if (playerTwoScore === +winningScore) {
+        submitWinner(playerTwo, roundNumber);
+      }
+    }, [
+      playerOneScore,
+      playerTwoScore,
+      playerOne,
+      playerTwo,
+      winningScore,
+      submitWinner,
+      roundNumber,
+    ]);
 
    
     const congratulations = () => {
         if (playerTwoScore === +winningScore && isFinal) {
         return <p>{`Congratulations ${playerTwo.name} You are the tournament winner!!!!`}</p>
         } 
-        else if (playerOneScore === +winningScore && isFinal) {
-            return <p>{`Congratulations ${playerOne.name} You are the tournament winner!!!!`}</p>
-        }
-        else if (playerTwoScore === +winningScore && !isFinal) {
-            return <p>{`Well done ${playerTwo.name}`}</p>
+  };
 
-        } else if (playerOneScore === +winningScore && !isFinal) {
-            return <p>{`Well done ${playerOne.name}`}</p>
-        }
-        
+  let buttonStyle = {
+    backgroundColor: "#d37121",
     }
-
-     let buttonStyle = {
-        backgroundColor: "#d37121",
-    }
-
 
     return (
         <div>

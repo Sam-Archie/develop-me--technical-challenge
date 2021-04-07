@@ -5,11 +5,12 @@ const initialState = {
     tournamentName: "",
     tournamentId: "",
     winningScore: 0,
-    listOfRounds: [],
-    listOfPlayers: [],
+    roundNumber: 0,
     listOfGames: [],
+    listOfPlayers: [],
+    listOfWinners: [],
+    gameResultData: [],
     tournamentStarted: false,
-    winnerList: [],
     }
 
 export default initialState; 

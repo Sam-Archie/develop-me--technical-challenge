@@ -4,7 +4,6 @@ import TournamentSetup from "./TournamentSetup";
 
 const mapStateToProps = state => {
     return {
-        startTournament: state.startTournament,
         playerCount: state.playerCount,
         listOfPlayers: state.listOfPlayers
     }

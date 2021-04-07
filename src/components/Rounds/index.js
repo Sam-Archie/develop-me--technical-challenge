@@ -4,11 +4,13 @@ import { resetAction, submitRoundAction } from "../../data/actions.js";
 
 const mapStateToProps = state => {
     return {
-        round: state.listOfRounds,
-        listOfWinners: state.winnerList,
-        listOfPlayers: state.listOfPlayers, 
-        tournamentName: state.tournamentName,
-    }
+      round: state.listOfGames,
+      listOfWinners: state.listOfWinners,
+      listOfPlayers: state.listOfPlayers,
+      tournamentName: state.tournamentName,
+      roundNumber: state.roundNumber,
+      tournamentId: state.tournamentId,
+    };
 }
 
 const mapDispatchToProps = dispatch => {

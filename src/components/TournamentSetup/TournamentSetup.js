@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPlayers }) => {
+const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
 
     const [playerName, setPlayerName] = useState("");
     const [tournamentName, setTournamentName] = useState("");
@@ -20,19 +20,21 @@ const TournamentSetup = ({ startTournament, playerCount, addPlayerName, listOfPl
         setPlayerName("");
     }
 
-
     const handleTournamentName = (e) => { 
         const tournamentName = e.currentTarget.value; 
         setTournamentName(tournamentName);
     }
 
     const tournamentSubmit = (e) => {
+
         e.preventDefault();
+
         const tournamentData = {
             tournamentName: tournamentName,
             winningScore: winningScore,
             entrants: listOfPlayers,
         }
+
         startTournament(tournamentData);
     }
     

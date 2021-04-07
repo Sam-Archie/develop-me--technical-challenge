@@ -2,25 +2,19 @@ import initialState  from "./initial";
 import {v4 as uuid} from "uuid";
 
 
-const startTournament = (state, {payload}) => ({...state, listOfPlayers: randomizer([...state.listOfPlayers]), tournamentName: payload.tournamentName, tournamentStarted: true, winningScore: payload.winningScore, tournamentId: payload.id})
+const startTournament = (state, {payload}) => ({
+    ...state, 
+    listOfPlayers: randomizer([...state.listOfPlayers]),
+    tournamentName: payload.tournamentName, 
+    tournamentStarted: true,
+    winningScore: payload.winningScore, 
+    listOfWinners: [],
+    tournamentId: payload.id, 
+    roundNumber: 1,
+    listOfGames: payload.games
+})
 
 const randomizer = (listOfPlayers) => (listOfPlayers.sort(() => Math.random() - 0.5));
-
-const createInitialGames = (state) => ({...state, listOfRounds: createRoundFromArray(state.listOfPlayers)})
-
-const createRoundFromArray = listOfPlayers => {
-    return listOfPlayers.reduce((acc, player, index) => {
-    if (index % 2 === 1) {
-        return acc;
-    }
-    const game = {
-        id: uuid(),
-        playerOne: player,
-        playerTwo: listOfPlayers[index + 1],
-    }
-    return [...acc, game];
-
-},[])}
 
 const reset = () => {
     return {
@@ -31,18 +25,17 @@ const reset = () => {
 const gameWinner = (state, {payload}) => {
     let player = payload; 
     return {
-        ...state,
-        winnerList: [...state.winnerList, player],
-         
-    }
+      ...state,
+      listOfWinners: [...state.listOfWinners, player],
+    };
 }
 
-const newRound = (state) => {
+const newRound = (state, {payload}) => {
     return {
-        ...state,
-        listOfPlayers: state.winnerList,
-        winnerList: [],
-    }
+      ...state,
+      listOfGames: payload,
+      listOfWinners: [],
+    };
 }
 
 
@@ -62,8 +55,8 @@ const addNewPlayerAtStart = (state, {payload}) => {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "START_TOURNAMENT" : return createInitialGames(startTournament(state, action));
-        case "SUBMIT_ROUND" : return createInitialGames(newRound(state, action));
+        case "START_TOURNAMENT" : return startTournament(state, action);
+        case "SUBMIT_ROUND" : return newRound(state, action);
         case "WINNER" : return gameWinner(state, action);
         case "ADD_PLAYER" : return addNewPlayerAtStart(state, action);
         case "RESET" : return reset();
