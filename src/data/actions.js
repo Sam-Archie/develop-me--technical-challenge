@@ -49,19 +49,26 @@ export const resetAction = () => {
     }
 }
 
-export const gameWinnerAction = (player, roundNumber) => {
+export const gameWinnerAction = (player, scores) => {
     return {
         type: "WINNER",
-        payload: {player: player, roundNumber: roundNumber},
+        payload: {
+          player,
+          scores
+        }
     }
 }
 
-export const submitRoundAction = (listOfWinners, tournamentId, roundNumber) => {
-   const games = createGamesFromPlayers(
-     listOfWinners,
+export const submitRoundAction = (listOfPlayers, tournamentId, roundNumber) => {
+
+    const games = createGamesFromPlayers(
+     listOfPlayers,
      tournamentId,
      roundNumber
    );
+   
+   axios.post("/games", games);
+
     return {
         type: "SUBMIT_ROUND",
         payload: games,

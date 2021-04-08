@@ -8,15 +8,16 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
     const [winningScore, setWinningScore] = useState("7");
 
     const handlePlayerName = (e) => setPlayerName(e.currentTarget.value);
-        
 
     const playerNameSubmit = (e) => {
         e.preventDefault();
         if (playerName === "") {
             return;
+
         } else if (playerName !== "") {
             addPlayerName(playerName);
         }
+
         setPlayerName("");
     }
 
@@ -39,9 +40,11 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
     }
     
     const correctPlayerNumber = (n) => {
+        
         if (n === 0) {
             return false;
         }
+
         return parseInt((Math.ceil((Math.log(n) / Math.log(2))))) === parseInt((Math.floor(((Math.log(n) / Math.log(2))))));
     }
     
@@ -51,7 +54,7 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
      
     return (  
         <>
-            <form className="main-form" onSubmit={ tournamentSubmit }>
+            <form onSubmit={ tournamentSubmit }>
                 <div className="player-name-form">
                 <label htmlFor="playerName">Enter Player Name:</label>
                 <input
@@ -83,16 +86,18 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
                 <button disabled={ isDisabled() }>Start Tournament</button>
 
             </form>
-            <ul className="list-group">
-                <p>Tournament Players</p>
-                    {listOfPlayers.map((player, index) => (
-                        <li className="list-group-item" key={index}>{player.name}</li>
-                    ))}
-            </ul>
-            <p>{listOfPlayers.length < 4 ? "Please enter four or more players" : 
-                    !correctPlayerNumber(listOfPlayers.length) ? "Please enter 4, 8, 16,32, 64 ..... number of players" : 
-                        null}
-            </p>
+            <div className="player-list">
+                <ul className="">
+                    <p>Tournament Players</p>
+                        {listOfPlayers.map((player, index) => (
+                            <li className="player-list" key={index}>{player.name}</li>
+                        ))}
+                </ul>
+                <p>{listOfPlayers.length < 4 ? "Please enter four or more players" :
+                        !correctPlayerNumber(listOfPlayers.length) ? "Please enter 4, 8, 16,32, 64 ..... number of players" :
+                            null}
+                </p>
+            </div>
         </>
     )
    }

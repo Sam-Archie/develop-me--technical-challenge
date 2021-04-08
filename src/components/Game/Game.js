@@ -1,17 +1,23 @@
 import { useState, useEffect } from "react";
 
 
-const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore, roundNumber }) => {
+const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore}) => {
     
     const [playerOneScore, setPlayerOneScore] = useState(0);
     const [playerTwoScore, setPlayerTwoScore] = useState(0);
 
     useEffect(() => {
+
+      const scores = {
+        playerAScore : playerOneScore,
+        playerBScore : playerTwoScore
+      }
+
       if (playerOneScore === +winningScore) {
-        submitWinner(playerOne, roundNumber);
+        submitWinner(playerTwo, scores);
       }
       if (playerTwoScore === +winningScore) {
-        submitWinner(playerTwo, roundNumber);
+        submitWinner(playerOne, scores);
       }
     }, [
       playerOneScore,
@@ -20,14 +26,16 @@ const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore, round
       playerTwo,
       winningScore,
       submitWinner,
-      roundNumber,
     ]);
 
    
     const congratulations = () => {
         if (playerTwoScore === +winningScore && isFinal) {
         return <p>{`Congratulations ${playerTwo.name} You are the tournament winner!!!!`}</p>
-        } 
+        }
+        else if (playerOneScore === +winningScore && isFinal) {
+          return <p>{`Congratulations ${playerOne.name} You are the tournament winner!!!!`}</p>
+          }
   };
 
   let buttonStyle = {

@@ -19,15 +19,8 @@ const Rounds = ({ round, reset, submitRound, listOfPlayers, listOfWinners, tourn
         <button className="btn primary" onClick={reset}>
           RESET
         </button>
-        {round.length === listOfWinners.length ? (
-          <button
-            onClick={() =>
-              submitRound(listOfWinners, tournamentId, roundNumber)
-            }
-          >
-            Submit All Rounds
-          </button>
-        ) : null}
+            {round.length === listOfPlayers.length && listOfPlayers.length > 1 ? <button onClick={() => submitRound(listOfPlayers, tournamentId, roundNumber)}> Submit All Rounds
+        </button> : null}
       </div>
     );
 };

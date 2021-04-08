@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
        reset: () => dispatch(resetAction()),
-       submitRound: () => dispatch(submitRoundAction()),
+       submitRound: (listOfPlayers, tournamentId, roundNumber) => dispatch(submitRoundAction(listOfPlayers, tournamentId, roundNumber)),
     };
 };
 

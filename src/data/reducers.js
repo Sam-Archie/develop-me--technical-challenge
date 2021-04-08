@@ -8,7 +8,6 @@ const startTournament = (state, {payload}) => ({
     tournamentName: payload.tournamentName, 
     tournamentStarted: true,
     winningScore: payload.winningScore, 
-    listOfWinners: [],
     tournamentId: payload.id, 
     roundNumber: 1,
     listOfGames: payload.games
@@ -23,10 +22,9 @@ const reset = () => {
 }
 
 const gameWinner = (state, {payload}) => {
-    let player = payload; 
     return {
       ...state,
-      listOfWinners: [...state.listOfWinners, player],
+      listOfPlayers: [...state.listOfPlayers.filter((player) => player.id !== payload.player.id)],
     };
 }
 

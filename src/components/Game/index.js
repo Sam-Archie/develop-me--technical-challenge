@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-       submitWinner: (player) => dispatch(gameWinnerAction(player)),
+       submitWinner: (player, scores) => dispatch(gameWinnerAction(player, scores)),
     };
 };
 
