@@ -1,8 +1,12 @@
 
-.btn-main {
-    background-color: "#d37121"   
-}
-
-.add-payer-btn {
-    
+.add-btn {
+    border: none;
+    background-color: rgba(228, 228, 228, 0.87);
+    margin-left: 1rem;
+    font-size: 18px;
+    border: 1px solid black;
+    border-radius: .2rem;
+    &__tournament__btn {
+        margin-top: 1rem;
+    }
 }

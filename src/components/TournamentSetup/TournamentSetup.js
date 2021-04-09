@@ -53,53 +53,61 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
     const isExisitingName = () => listOfPlayers.some((player) => player.name.toLowerCase() === playerName.toLowerCase());
      
     return (  
-        <>
-            <form onSubmit={ tournamentSubmit }>
-                <div className="player-name-form">
-                <label htmlFor="playerName">Enter Player Name:</label>
-                <input
-                    className=""
-                    type="text"
-                    id="playerName"
-                    onChange={ handlePlayerName } 
-                    value={ playerName }/>
-                <button className=".add-player-button" disabled={ isExisitingName() } onClick={ playerNameSubmit }>Add Player</button>
-                {playerName === "" ? <p>Please Enter a valid name</p> : null}
-                {isExisitingName() && <span>You cannot have two names that are the same</span>}
-                </div>
-
-                <label>Select Winning Score</label>
-                <select onChange={e => setWinningScore(e.currentTarget.value)}>
-                    <option value={7}>7</option>
-                    <option value={11}>11</option>
-                    <option value={15}>15</option>
-                    <option value={21}>21</option>
-                </select>
-
-                <label htmlFor="tournamentName">Enter Tournament Name:</label>
-                <input
-                    className=""
-                    type="text"
-                    id="tournamentName"
-                    onChange={ handleTournamentName } 
-                    value={ tournamentName }/>
-                <button disabled={ isDisabled() }>Start Tournament</button>
-
-            </form>
-            <div className="player-list">
-                <ul className="">
-                    <p>Tournament Players</p>
+    <section className="table-container">
+        <div className="tournament-form">
+            <div>
+                <form onSubmit={ tournamentSubmit }>
+                    <div className="player-name-form">
+                        <p htmlFor="playerName">Enter Player Name:</p>
+                        <input
+                            className="form-fields"
+                            type="text"
+                            id="playerName"
+                            onChange={ handlePlayerName }
+                            value={ playerName }/>
+                    <button className="add-btn" disabled={ isExisitingName() } onClick={ playerNameSubmit }>Add Player</button>
+                    {isExisitingName() && <span className="error-messages">You cannot have two names that are the same</span>}
+                    </div>
+    
+                    <div>
+                        <p>Select Winning Score:</p>
+                        <select className="form-fields" onChange={e => setWinningScore(e.currentTarget.value)}>
+                            <option className="form-fields" value={7}>7</option>
+                            <option className="form-fields" value={11}>11</option>
+                            <option className="form-fields" value={15}>15</option>
+                            <option className="form-fields" value={21}>21</option>
+                        </select>
+                    </div>
+                    <div>
+        
+                        <p htmlFor="tournamentName">Enter Tournament Name:</p>
+                        <input
+                            className="form-fields"
+                            type="text"
+                            id="tournamentName"
+                            onChange={ handleTournamentName }
+                            value={ tournamentName }/>
+                        <button className="add-btn add-btn__tournament__btn" disabled={ isDisabled() }>Start Tournament</button>
+                    </div>
+                    <p className="error-messages">{listOfPlayers.length < 4 ? "Please enter four or more players" :
+                        !correctPlayerNumber(listOfPlayers.length) ? "Please enter 4, 8, 16,32, 64 ..... number of players" :
+                        null}
+                </p>
+                </form>
+            </div>
+    
+            {playerName === "" ? <p className="error-messages">Please Enter a valid name</p> : null}
+        </div>
+            <div className="tournament-form tournament-form__bottom">
+                <p>Tournament Players:</p>
+                <ul className="player-list-container">
                         {listOfPlayers.map((player, index) => (
                             <li className="player-list" key={index}>{player.name}</li>
-                        ))}
+                            ))}
                 </ul>
-                <p>{listOfPlayers.length < 4 ? "Please enter four or more players" :
-                        !correctPlayerNumber(listOfPlayers.length) ? "Please enter 4, 8, 16,32, 64 ..... number of players" :
-                            null}
-                </p>
             </div>
-        </>
+    </section>
     )
-   }
-   
-   export default TournamentSetup;
+}
+
+export default TournamentSetup;

@@ -7,6 +7,7 @@ const Rounds = ({ round, reset, submitRound, listOfPlayers, listOfWinners, tourn
     return (
       <div>
         <h1>{tournamentName}</h1>
+        <section className="games">
         {round.map((game) => (
           <Game
             key={game.id}
@@ -16,9 +17,9 @@ const Rounds = ({ round, reset, submitRound, listOfPlayers, listOfWinners, tourn
             isFinal={round.length === 1}
           />
         ))}
-        <button className="btn primary" onClick={reset}>
-          RESET
-        </button>
+        </section>
+        <button className="btn primary" onClick={reset}>Back to the home page</button>
+        <p>....Carefull if you click me you will lose your games</p>
             {round.length === listOfPlayers.length && listOfPlayers.length > 1 ? <button onClick={() => submitRound(listOfPlayers, tournamentId, roundNumber)}> Submit All Rounds
         </button> : null}
       </div>

@@ -4,9 +4,9 @@ import Header from "../Header/Header";
 
 
 const App = ({ tournamentStarted }) =>(
+    
     <div className="container">
-        
-        <Header />
+    <Header />
         { 
             !tournamentStarted ? 
             <TournamentSetup /> : 

@@ -32,7 +32,6 @@ const newRound = (state, {payload}) => {
     return {
       ...state,
       listOfGames: payload,
-      listOfWinners: [],
     };
 }
 

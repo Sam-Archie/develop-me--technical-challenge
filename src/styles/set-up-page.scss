@@ -1,0 +1,43 @@
+
+.tournament-form {
+    padding: 0 1rem;
+    max-width: 40vw;
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30rem;
+    background-color: hsla(0, 0%, 0%, 0.43);
+    color: white;
+    font-size: 22px;
+    border-radius: .25rem;
+    border: 1px solid white;
+    background-color:#0a56c7a8;
+    &__bottom {
+        overflow: auto;
+    }
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-fields {
+    background-color: #ffffff9c;
+    border: none;
+    border-radius: .2rem;
+}
+
+.player-list {
+    width: 50%;
+    display: inline;
+    list-style: none;
+}
+.player-list-container {
+    display: flex;
+    flex-direction: column;
+}
+

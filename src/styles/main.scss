@@ -1,22 +1,18 @@
 @import "./buttons.scss";
-@import "./buttons.scss";
-@import "./buttons.scss";
+@import "./fonts.scss";
+@import "./games-display.scss";
+@import "./error-message.scss";
+@import "./set-up-page.scss";
+
 
 * {
     box-sizing: border-box;
 }
 
-.container {
-    padding: 0 1rem;
-    max-width: 1000px;
-    margin: auto;
-}
 
 body {
-    background-image: url(../styles/Assets/Images/table-1338833_1920.jpg);
+    background-image: url(../styles/Assets/Images/bounce-img.jpg);
+    font-family: "Playfair Display Italic";
 }
 
-.tournament-form {
-    
-}
 

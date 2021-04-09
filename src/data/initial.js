@@ -8,8 +8,6 @@ const initialState = {
     roundNumber: 0,
     listOfGames: [],
     listOfPlayers: [],
-    listOfWinners: [],
-    gameResultData: [],
     tournamentStarted: false,
     }
 
