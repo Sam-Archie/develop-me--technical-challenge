@@ -2,7 +2,7 @@ import React from 'react';
 import Game from "../Game"; 
 
 
-const Rounds = ({ round, reset, submitRound, listOfPlayers, listOfWinners, tournamentName, roundNumber, tournamentId }) => {
+const Rounds = ({ round, reset, submitRound, listOfPlayers, tournamentName, roundNumber, tournamentId }) => {
 
     return (
       <div>

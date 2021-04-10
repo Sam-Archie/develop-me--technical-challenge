@@ -18,6 +18,10 @@
     }
 }
 
+.setup-page-container{
+    display: flex;
+    flex-direction: row;
+}
 .table-container {
     display: flex;
     flex-direction: column;
@@ -41,3 +45,41 @@
     flex-direction: column;
 }
 
+.historic-player-list {
+    display: flex;
+    max-width: 20vw;
+    margin: 5rem;
+    justify-content: space-between;
+}
+
+.historic-players {
+    width: 50px;
+    height: 50px;
+    flex: 1 0 50%;
+}
+
+.list-display {
+    overflow: "auto";
+    padding: 0 1rem;
+    max-width: 40vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30rem;
+    background-color: hsla(0, 0%, 0%, 0.43);
+    color: white;
+    font-size: 22px;
+    border-radius: .25rem;
+    border: 1px solid white;
+    background-color:#0a56c7a8;
+    &__bottom {
+        overflow: auto;
+    }
+}
+
+.list-display-spacing {
+    display: 'flex';
+    width: "100%";
+    flex-wrap: 'wrap';
+}

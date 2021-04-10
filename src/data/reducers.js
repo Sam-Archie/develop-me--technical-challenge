@@ -50,7 +50,7 @@ const addNewPlayerAtStart = (state, {payload}) => {
 }
 
 const loadHistoricPlayers = (state, {payload}) => {
-    console.log(payload)
+
     return {
         ...state,
         historicPlayerList: payload,
