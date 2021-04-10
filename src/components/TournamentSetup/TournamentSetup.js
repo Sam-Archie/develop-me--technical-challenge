@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 
 
-const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
+const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers, getHistoricPlayers, historicPlayerList }) => {
 
     const [playerName, setPlayerName] = useState("");
     const [tournamentName, setTournamentName] = useState("");
     const [winningScore, setWinningScore] = useState("7");
+    
+    const getInitialPlayers = getHistoricPlayers;
 
     const handlePlayerName = (e) => setPlayerName(e.currentTarget.value);
+
+    useEffect (() => {
+        getInitialPlayers();
+    }, [getInitialPlayers]);
+  
 
     const playerNameSubmit = (e) => {
         e.preventDefault();
@@ -21,8 +28,8 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
         setPlayerName("");
     }
 
-    const handleTournamentName = (e) => { 
-        const tournamentName = e.currentTarget.value; 
+    const handleTournamentName = (e) => {
+        const tournamentName = e.currentTarget.value;
         setTournamentName(tournamentName);
     }
 
@@ -38,22 +45,34 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
 
         startTournament(tournamentData);
     }
-    
+
     const correctPlayerNumber = (n) => {
-        
+
         if (n === 0) {
             return false;
         }
 
         return parseInt((Math.ceil((Math.log(n) / Math.log(2))))) === parseInt((Math.floor(((Math.log(n) / Math.log(2))))));
     }
-    
+
     const isDisabled = () => listOfPlayers.length < 4 || !correctPlayerNumber(listOfPlayers.length) ? true : false;
 
     const isExisitingName = () => listOfPlayers.some((player) => player.name.toLowerCase() === playerName.toLowerCase());
-     
-    return (  
+
+
+    return (
     <section className="table-container">
+        <section>
+                <ul>
+                    {historicPlayerList.map((player, index) => 
+                    <button 
+                    key={index} 
+                    disabled={ isExisitingName() }          
+                    value={ player.name }
+                    >{player.name}</button>
+                )}
+                </ul>
+        </section>
         <div className="tournament-form">
             <div>
                 <form onSubmit={ tournamentSubmit }>
@@ -68,7 +87,7 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
                     <button className="add-btn" disabled={ isExisitingName() } onClick={ playerNameSubmit }>Add Player</button>
                     {isExisitingName() && <span className="error-messages">You cannot have two names that are the same</span>}
                     </div>
-    
+
                     <div>
                         <p>Select Winning Score:</p>
                         <select className="form-fields" onChange={e => setWinningScore(e.currentTarget.value)}>
@@ -79,7 +98,7 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
                         </select>
                     </div>
                     <div>
-        
+
                         <p htmlFor="tournamentName">Enter Tournament Name:</p>
                         <input
                             className="form-fields"
@@ -95,7 +114,7 @@ const TournamentSetup = ({ startTournament, addPlayerName, listOfPlayers }) => {
                 </p>
                 </form>
             </div>
-    
+
             {playerName === "" ? <p className="error-messages">Please Enter a valid name</p> : null}
         </div>
             <div className="tournament-form tournament-form__bottom">

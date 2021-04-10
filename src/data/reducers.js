@@ -37,7 +37,7 @@ const newRound = (state, {payload}) => {
 
 
 const addNewPlayerAtStart = (state, {payload}) => {
-
+    
     const player = {
         id : uuid(),
         name : payload
@@ -49,6 +49,14 @@ const addNewPlayerAtStart = (state, {payload}) => {
     }
 }
 
+const loadHistoricPlayers = (state, {payload}) => {
+    console.log(payload)
+    return {
+        ...state,
+        historicPlayerList: payload,
+    }
+}
+
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -56,6 +64,7 @@ const reducer = (state, action) => {
         case "SUBMIT_ROUND" : return newRound(state, action);
         case "WINNER" : return gameWinner(state, action);
         case "ADD_PLAYER" : return addNewPlayerAtStart(state, action);
+        case "LOAD_HISTORIC_PLAYERS" : return loadHistoricPlayers(state, action);
         case "RESET" : return reset();
         default : return state;
         

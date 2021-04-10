@@ -32,7 +32,6 @@ export const tournamentStartAction = (tournamentData) => {
     const games = createGamesFromPlayers(tournamentData.entrants, tournament.id, 1);
 
     axios.post("/tournaments", tournament)
-    axios.post("/games", games);
 
     return {
       type: "START_TOURNAMENT",
@@ -75,10 +74,26 @@ export const submitRoundAction = (listOfPlayers, tournamentId, roundNumber) => {
     }
 }
 
-
 export const addPlayerNameAction = (player) => {
     return {
         type: "ADD_PLAYER",
         payload: player
     }
 }
+
+export const  getHistoricPlayersAction = () => {
+  return (dispatch) => {
+      axios.get('/players').then(( {data} ) => {
+          dispatch(loadHistoricPlayers(data));
+      });
+    }
+  }
+
+export const loadHistoricPlayers = (data) => {
+  return {
+      type: "LOAD_HISTORIC_PLAYERS",
+      payload: data
+  }
+}
+
+      

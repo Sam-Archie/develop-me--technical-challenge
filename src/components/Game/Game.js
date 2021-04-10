@@ -46,16 +46,17 @@ const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore}) => {
         <div className="table">
             <div className="player-one">
               <p style={playerOneScore === +winningScore ? buttonStyle : null}>{ playerOne.name }</p>
-              <p>{ playerOneScore }</p>
               <button disabled={playerOneScore === +winningScore || playerTwoScore === +winningScore} onClick={() => setPlayerOneScore(playerOneScore + 1)}>+</button>
+              <p>{ playerOneScore }</p>
             </div>
             
             <div className="player-two">
-                <p style={playerTwoScore === +winningScore ? buttonStyle : null}>{ playerTwo.name }</p>
-    
                 <p>{ playerTwoScore }</p>
     
                 <button  disabled={playerOneScore === +winningScore || playerTwoScore === +winningScore}  onClick={ () => setPlayerTwoScore(playerTwoScore + 1)}>+</button>
+                
+                <p style={playerTwoScore === +winningScore ? buttonStyle : null}>{ playerTwo.name }</p>
+    
     
                 <div>{ congratulations() }</div>
               </div>

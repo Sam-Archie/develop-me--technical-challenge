@@ -1,11 +1,33 @@
 .games {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    background-color: rgba(0, 0, 0, 0.459);
-    height: 90vh;
+    grid-template-columns: repeat(4, auto);
+    gap: 1rem;
+    min-height: 40vh;
 }
 
 .tournament__game {
     display: flex;
     width: 85%;
 }
+
+.table {
+    font-size: 26px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
+    margin: 1rem;
+    color: white;
+    background-color:#0a56c7a8;
+    justify-content: space-between;
+}
+
+.player-one {
+    align-self: center;
+    margin-top: 2rem;
+}
+
+.player-two {
+    align-self: center;
+    margin-bottom: 2rem;
+}
+
