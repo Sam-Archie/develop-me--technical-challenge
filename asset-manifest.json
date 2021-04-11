@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Sam-Archie/develop-me--technical-challenge/static/css/main.6c145e00.chunk.css",
-    "main.js": "/Sam-Archie/develop-me--technical-challenge/static/js/main.1cbbc3e3.chunk.js",
-    "main.js.map": "/Sam-Archie/develop-me--technical-challenge/static/js/main.1cbbc3e3.chunk.js.map",
-    "runtime-main.js": "/Sam-Archie/develop-me--technical-challenge/static/js/runtime-main.7191436b.js",
-    "runtime-main.js.map": "/Sam-Archie/develop-me--technical-challenge/static/js/runtime-main.7191436b.js.map",
-    "static/js/2.a48f008b.chunk.js": "/Sam-Archie/develop-me--technical-challenge/static/js/2.a48f008b.chunk.js",
-    "static/js/2.a48f008b.chunk.js.map": "/Sam-Archie/develop-me--technical-challenge/static/js/2.a48f008b.chunk.js.map",
-    "static/js/3.fe77dd5d.chunk.js": "/Sam-Archie/develop-me--technical-challenge/static/js/3.fe77dd5d.chunk.js",
-    "static/js/3.fe77dd5d.chunk.js.map": "/Sam-Archie/develop-me--technical-challenge/static/js/3.fe77dd5d.chunk.js.map",
-    "index.html": "/Sam-Archie/develop-me--technical-challenge/index.html",
-    "static/css/main.6c145e00.chunk.css.map": "/Sam-Archie/develop-me--technical-challenge/static/css/main.6c145e00.chunk.css.map",
-    "static/js/2.a48f008b.chunk.js.LICENSE.txt": "/Sam-Archie/develop-me--technical-challenge/static/js/2.a48f008b.chunk.js.LICENSE.txt",
-    "static/media/main.scss": "/Sam-Archie/develop-me--technical-challenge/static/media/bounce-img.b49fbc27.jpg"
+    "main.css": "/develop-me--technical-challenge/static/css/main.bdcb5471.chunk.css",
+    "main.js": "/develop-me--technical-challenge/static/js/main.1cbbc3e3.chunk.js",
+    "main.js.map": "/develop-me--technical-challenge/static/js/main.1cbbc3e3.chunk.js.map",
+    "runtime-main.js": "/develop-me--technical-challenge/static/js/runtime-main.3d91eace.js",
+    "runtime-main.js.map": "/develop-me--technical-challenge/static/js/runtime-main.3d91eace.js.map",
+    "static/js/2.a48f008b.chunk.js": "/develop-me--technical-challenge/static/js/2.a48f008b.chunk.js",
+    "static/js/2.a48f008b.chunk.js.map": "/develop-me--technical-challenge/static/js/2.a48f008b.chunk.js.map",
+    "static/js/3.fe77dd5d.chunk.js": "/develop-me--technical-challenge/static/js/3.fe77dd5d.chunk.js",
+    "static/js/3.fe77dd5d.chunk.js.map": "/develop-me--technical-challenge/static/js/3.fe77dd5d.chunk.js.map",
+    "index.html": "/develop-me--technical-challenge/index.html",
+    "static/css/main.bdcb5471.chunk.css.map": "/develop-me--technical-challenge/static/css/main.bdcb5471.chunk.css.map",
+    "static/js/2.a48f008b.chunk.js.LICENSE.txt": "/develop-me--technical-challenge/static/js/2.a48f008b.chunk.js.LICENSE.txt",
+    "static/media/main.scss": "/develop-me--technical-challenge/static/media/bounce-img.b49fbc27.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7191436b.js",
+    "static/js/runtime-main.3d91eace.js",
     "static/js/2.a48f008b.chunk.js",
-    "static/css/main.6c145e00.chunk.css",
+    "static/css/main.bdcb5471.chunk.css",
     "static/js/main.1cbbc3e3.chunk.js"
   ]
 }
