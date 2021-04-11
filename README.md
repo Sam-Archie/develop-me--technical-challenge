@@ -1,3 +1,30 @@
+# How to configure locally
+To get this working on your local machine please do the following:
+
+Clone the repo, you will then need to run npm install to configure the application with the appropriate packages it needs.
+
+You should then be able to run npm start and it should look similiar to the following link:
+
+https://sam-archie.github.io/develop-me--technical-challenge/
+
+To get the previous entrants you will need to do the following:
+
+Create an axios.js file to configure the connection to the API.
+
+Inside the axios js file please have the following as a minimum:
+
+import axios from "axios";
+
+export default axios.create({
+    baseURL: "https://bouncepingpongapi.azurewebsites.net/api/",
+    
+    headers: {
+        Accept: "application/json"
+    },
+});
+
+This is not an absolute must for the project to run, however to be able to hook into the API and be able record the tournament history, game jistory and historic players it is needed.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
