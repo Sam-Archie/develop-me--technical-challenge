@@ -1,7 +1,8 @@
 
 .add-btn {
     border: none;
-    background-color: rgba(228, 228, 228, 0.87);
+    font-family: "Playfair Display Italic" ;
+    background-color: rgba(228, 228, 228, 0.822);
     margin-left: 1rem;
     font-size: 18px;
     border: 1px solid black;
@@ -10,3 +11,24 @@
         margin-top: 1rem;
     }
 }
+
+.score-button {
+    display:inline-block;
+    padding: 0.35em 1.2em;
+    padding : 0.35em 1.2em;
+    border :0.1em solid white;
+    margin :0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    text-decoration : none;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 300;
+    background-color:rgba(255, 255, 255, 0.329);
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.score-button:hover {
+    color: black;
+    background-color: #ffffff71;
+}
+

@@ -21,6 +21,17 @@
     justify-content: space-between;
 }
 
+.final-table {
+    font-size: 26px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
+    margin: 1rem;
+    color: white;
+    background-color:#0a56c7a8;
+    justify-content: space-between;
+}
+
 .player-one {
     align-self: center;
     margin-top: 2rem;

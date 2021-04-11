@@ -82,12 +82,12 @@ export const addPlayerNameAction = (player) => {
 }
 
 export const  getHistoricPlayersAction = () => {
-  return (dispatch) => {
-      axios.get('/players').then(( {data} ) => {
-          dispatch(loadHistoricPlayers(data));
-      });
-    }
+return (dispatch) => {
+    axios.get('/players').then(( {data} ) => {
+        dispatch(loadHistoricPlayers(data));
+    });
   }
+}
 
 export const loadHistoricPlayers = (data) => {
   return {

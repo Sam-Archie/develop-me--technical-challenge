@@ -27,40 +27,39 @@ const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore}) => {
       winningScore,
       submitWinner,
     ]);
-
-   
-    const congratulations = () => {
-        if (playerTwoScore === +winningScore && isFinal) {
-        return <p>{`Congratulations ${playerTwo.name} You are the tournament winner!!!!`}</p>
-        }
-        else if (playerOneScore === +winningScore && isFinal) {
-          return <p>{`Congratulations ${playerOne.name} You are the tournament winner!!!!`}</p>
-          }
-  };
-
-  let buttonStyle = {
-    backgroundColor: "#d37121",
+    
+    const style = {
+      width: "100%"
     }
-
+    
     return (
-        <div className="table">
+      <div>
+       
+        {(playerTwoScore === +winningScore && isFinal) ? <h1 > {`Congratulations ${playerTwo.name} `}</h1>
+              :  (playerOneScore === +winningScore && isFinal) ?  <h1> {`Congratulations ${playerOne.name}`}</h1> 
+                  : null}
+  
+        <div style={ style } className="table animate__animated animate__flipInX">
             <div className="player-one">
-              <p style={playerOneScore === +winningScore ? buttonStyle : null}>{ playerOne.name }</p>
-              <button disabled={playerOneScore === +winningScore || playerTwoScore === +winningScore} onClick={() => setPlayerOneScore(playerOneScore + 1)}>+</button>
+              <p className={playerOneScore === +winningScore ? "winner animate__animated animate__heartBeat" : null}>{ playerOne.name }</p>
+
+              <button className="score-button" disabled={playerOneScore === +winningScore || playerTwoScore === +winningScore} onClick={() => setPlayerOneScore(playerOneScore + 1)}>+</button>
+
               <p>{ playerOneScore }</p>
+
             </div>
             
             <div className="player-two">
+
                 <p>{ playerTwoScore }</p>
     
-                <button  disabled={playerOneScore === +winningScore || playerTwoScore === +winningScore}  onClick={ () => setPlayerTwoScore(playerTwoScore + 1)}>+</button>
-                
-                <p style={playerTwoScore === +winningScore ? buttonStyle : null}>{ playerTwo.name }</p>
+                <button className="score-button" disabled={playerOneScore === +winningScore || playerTwoScore === +winningScore}  onClick={ () => setPlayerTwoScore(playerTwoScore + 1)}>+</button>
+
+                <p className={playerTwoScore === +winningScore ? "winner animate__animated animate__heartBeat" : null}>{ playerTwo.name }</p>
     
-    
-                <div>{ congratulations() }</div>
               </div>
         </div>
+    </div>
     );
 };
 

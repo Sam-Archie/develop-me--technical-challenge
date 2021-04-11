@@ -1,0 +1,44 @@
+
+.error-messages {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgba(228, 151, 8, 0.747);
+    font-family: 'Playfair Display Itallic';
+}
+
+.winner {
+    color:  rgb(228, 151, 8);
+}
+
+.congratulations-container { 
+    display: inline-flex;
+    max-width: 50%;
+}
+.congratulations {
+    font-size: 1rem;
+}
+
+.careful {
+    width: fit-content;
+    margin: 2rem;
+    display: inline;
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.575);
+    padding: .2rem;
+    border-radius: .2rem;
+}
+
+.back-to-home-container {
+    margin-bottom: 1rem;
+}
+
+.heading {
+    color: #a53f3fd5;
+    font-family: "Playfair Display";
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.774);
+    padding: 0.5rem;
+    margin-top: 10px;
+    border-radius: .2rem;
+}

@@ -7,7 +7,8 @@ const mapStateToProps = state => {
     return {
         winningScore: state.winningScore,
         tournamentId: state.tournamentId,
-        roundNumber: state.roundNumber
+        roundNumber: state.roundNumber,
+        listOfPlayers: state.listOfPlayers
     }
 }
 

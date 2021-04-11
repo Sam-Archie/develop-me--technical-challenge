@@ -2,11 +2,11 @@ import React from 'react';
 import Game from "../Game"; 
 
 
-const Rounds = ({ round, reset, submitRound, listOfPlayers, tournamentName, roundNumber, tournamentId }) => {
+const Rounds = ({ round, reset, submitRound, listOfPlayers, tournamentName, roundNumber, tournamentId, isFinal }) => {
 
     return (
       <div>
-        <h1>{tournamentName}</h1>
+        <h1 className="heading" >{tournamentName}</h1>
         <section className="games">
         {round.map((game) => (
           <Game
@@ -18,9 +18,12 @@ const Rounds = ({ round, reset, submitRound, listOfPlayers, tournamentName, roun
           />
         ))}
         </section>
-        <button className="btn primary" onClick={reset}>Back to the home page</button>
-        <p>....Carefull if you click me you will lose your games</p>
-            {round.length === listOfPlayers.length && listOfPlayers.length > 1 ? <button onClick={() => submitRound(listOfPlayers, tournamentId, roundNumber)}> Submit All Rounds
+        <div className="back-to-home-container">
+          <button className="add-btn" onClick={reset}>Back to the home</button>
+
+          <p className="careful">This will take you back to the home page</p>
+        </div>
+            {round.length === listOfPlayers.length && listOfPlayers.length > 1 ? <button className="add-btn" onClick={() => submitRound(listOfPlayers, tournamentId, roundNumber)}> Submit All Rounds
         </button> : null}
       </div>
     );

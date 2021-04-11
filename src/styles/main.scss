@@ -1,7 +1,7 @@
 @import "./buttons.scss";
 @import "./fonts.scss";
 @import "./games-display.scss";
-@import "./error-message.scss";
+@import "./messages.scss";
 @import "./set-up-page.scss";
 
 
@@ -9,10 +9,8 @@
     box-sizing: border-box;
 }
 
-
 body {
     background-image: url(../styles/Assets/Images/bounce-img.jpg);
     font-family: "Playfair Display Italic";
 }
-
 

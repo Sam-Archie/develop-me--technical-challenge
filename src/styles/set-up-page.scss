@@ -33,13 +33,14 @@
     background-color: #ffffff9c;
     border: none;
     border-radius: .2rem;
+    height: 2rem;
 }
 
 .player-list {
     width: 50%;
     display: inline;
-    list-style: none;
 }
+
 .player-list-container {
     display: flex;
     flex-direction: column;
@@ -82,4 +83,8 @@
     display: 'flex';
     width: "100%";
     flex-wrap: 'wrap';
+}
+
+.main-header {
+    display: block;
 }

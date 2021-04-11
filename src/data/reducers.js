@@ -5,7 +5,7 @@ import {v4 as uuid} from "uuid";
 const startTournament = (state, {payload}) => ({
     ...state, 
     listOfPlayers: randomizer([...state.listOfPlayers]),
-    tournamentName: payload.tournamentName, 
+    tournamentName: payload.name, 
     tournamentStarted: true,
     winningScore: payload.winningScore, 
     tournamentId: payload.id, 
@@ -37,7 +37,7 @@ const newRound = (state, {payload}) => {
 
 
 const addNewPlayerAtStart = (state, {payload}) => {
-    
+
     const player = {
         id : uuid(),
         name : payload
