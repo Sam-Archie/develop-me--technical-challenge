@@ -1,8 +1,8 @@
 
 .error-messages {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 20px;
-    color: rgba(228, 151, 8, 0.747);
+    font-size: 24px;
+    color: rgb(255, 166, 0);
     font-family: 'Playfair Display Itallic';
 }
 
@@ -10,13 +10,12 @@
     color:  rgb(228, 151, 8);
 }
 
-.congratulations-container { 
-    display: inline-flex;
-    max-width: 50%;
-}
 .congratulations {
-    font-size: 1rem;
+    font-size: 4rem;
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.747);
 }
+
 
 .careful {
     width: fit-content;
@@ -35,7 +34,7 @@
 
 .heading {
     color: #a53f3fd5;
-    font-family: "Playfair Display";
+    font-family: "Playfair Display", "Arial, Helvetica, sans-serif";
     width: fit-content;
     background-color: rgba(255, 255, 255, 0.774);
     padding: 0.5rem;

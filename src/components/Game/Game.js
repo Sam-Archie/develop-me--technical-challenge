@@ -34,11 +34,6 @@ const Game = ({ playerOne, playerTwo, submitWinner, isFinal, winningScore}) => {
     
     return (
       <div>
-       
-        {(playerTwoScore === +winningScore && isFinal) ? <h1 > {`Congratulations ${playerTwo.name} `}</h1>
-              :  (playerOneScore === +winningScore && isFinal) ?  <h1> {`Congratulations ${playerOne.name}`}</h1> 
-                  : null}
-  
         <div style={ style } className="table animate__animated animate__flipInX">
             <div className="player-one">
               <p className={playerOneScore === +winningScore ? "winner animate__animated animate__heartBeat" : null}>{ playerOne.name }</p>
