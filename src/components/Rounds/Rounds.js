@@ -20,7 +20,7 @@ const Rounds = ({ round, reset, submitRound, listOfPlayers, tournamentName, roun
           
         </section>
         <div className="congratulations-image">
-          {listOfPlayers.length === 1 ? <p className="congratulations  ">Congratulations to {listOfPlayers[0].name} you are the tournament winner!!!</p>: null}
+          {listOfPlayers.length === 1 ? <p className="congratulations  ">Congratulations {listOfPlayers[0].name}, you are the tournament winner!!!</p>: null}
           </div>
         <div className="back-to-home-container">
           <button className="add-btn" onClick={reset}>Restart</button>
